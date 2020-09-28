@@ -6,6 +6,8 @@ import { v4 as uuid } from 'uuid';
 import Card from '../../components/Card';
 import List from '../../components/List';
 
+import { Container } from './styles';
+
 const itemsFromBackend = [
   { id: uuid(), content: 'First task' },
   { id: uuid(), content: 'Second task' },
@@ -33,7 +35,7 @@ const columnsFromBackend = {
   },
 };
 
-function App() {
+function Board() {
   const [columns, setColumns] = useState(columnsFromBackend);
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) return;
@@ -73,7 +75,7 @@ function App() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
+    <Container>
       <DragDropContext
         onDragEnd={result => onDragEnd(result)}
       >
@@ -91,8 +93,8 @@ function App() {
           );
         })}
       </DragDropContext>
-    </div>
+    </Container>
   );
 }
 
-export default App;
+export default Board;

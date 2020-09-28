@@ -1,17 +1,34 @@
 import styled from 'styled-components';
+import { FaPlus } from 'react-icons/fa';
 
 export const Container = styled.div`
-  padding: 0 15px;
-  height: 100%;
-  flex: 0 0 320px;
-  border-radius: 10px 10px 0px 0px;
-  background: #8A8C8E;
-  & + div {
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
-    margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const AddButton = styled.button`
+  /* flex: 1 0 auto; */
+  /* width: 100%; */
+  display: flex;
+  padding: 3px;
+  background: transparent;
+  color: #5e6c84;
+  border-radius: 5px;
+  /* text-decoration: none; */
+  outline: none;
+  border-color: transparent;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
 
-  ul {
-    margin-top: 10px;
-  }
+`;
+
+export const AddButtonIcon = styled(FaPlus)`
+  height: 15px;
+  width: 15px;
+  color: #5e6c84;
+  margin-right: 3px;
 `;

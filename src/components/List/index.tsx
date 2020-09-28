@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Droppable,
 } from 'react-beautiful-dnd';
+import { AddButton, AddButtonIcon, Container } from './styles';
 
 // import { Container } from './styles';
 
@@ -14,14 +15,7 @@ const List: React.FC<ListProps> = ({
   children, columnId, name,
 }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-
-    >
+    <Container>
       <h2>{name}</h2>
       <div style={{ margin: 8 }}>
         <Droppable droppableId={columnId} key={columnId}>
@@ -42,12 +36,18 @@ const List: React.FC<ListProps> = ({
                 {children}
 
                 {provided.placeholder}
+                <AddButton type="button">
+                  <AddButtonIcon />
+                  {' '}
+                  Add new card
+                </AddButton>
               </div>
             );
           }}
         </Droppable>
+
       </div>
-    </div>
+    </Container>
   );
 };
 
