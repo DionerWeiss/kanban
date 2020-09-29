@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Droppable,
 } from 'react-beautiful-dnd';
-import { AddButton, AddButtonIcon, Container } from './styles';
+import {
+  AddNewCardButton, AddNewCardButtonIcon, Container, CloseIcon, FormNewCard, FormNewCardFooter,
+} from './styles';
 
 // import { Container } from './styles';
 
@@ -14,6 +16,21 @@ interface ListProps {
 const List: React.FC<ListProps> = ({
   children, columnId, name,
 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  function showNewCardForm() {
+    setIsVisible(true);
+    if (ref.current) {
+      ref.current.focus();
+    }
+  }
+
+  function hideNewCardForm() {
+    setIsVisible(false);
+  }
+
   return (
     <Container>
       <h2>{name}</h2>
@@ -34,13 +51,20 @@ const List: React.FC<ListProps> = ({
                 }}
               >
                 {children}
+                <FormNewCard className={isVisible ? 'visible' : ''} onBlur={hideNewCardForm}>
+                  <textarea id="roww" rows={3} placeholder="Enter a title for this card..." ref={ref} />
+                  <FormNewCardFooter>
+                    <button type="button">Add Card</button>
+                    <CloseIcon onClick={hideNewCardForm} />
+                  </FormNewCardFooter>
+                </FormNewCard>
 
                 {provided.placeholder}
-                <AddButton type="button">
-                  <AddButtonIcon />
+                <AddNewCardButton type="button" onClick={showNewCardForm}>
+                  <AddNewCardButtonIcon />
                   {' '}
                   Add new card
-                </AddButton>
+                </AddNewCardButton>
               </div>
             );
           }}
