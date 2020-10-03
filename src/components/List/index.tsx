@@ -36,14 +36,29 @@ const List: React.FC<ListProps> = ({
   }
 
   function hideNewCardForm() {
-    setNewCardTitle('');
     setIsFormCardVisible(false);
+    setNewCardTitle('');
   }
 
-  function addNewCard() {
-    createNewCard(columnId, newCardTitle);
+  function handleBlur() {
+    if (!newCardTitle) {
+      hideNewCardForm();
+    }
+  }
 
+  function handleAddNewCard() {
+    createNewCard(columnId, newCardTitle);
     hideNewCardForm();
+  }
+
+  function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    setNewCardTitle(event.target.value);
+  }
+
+  function handleKeyPress(event: React.KeyboardEvent) {
+    if (event.key === 'Enter') {
+      handleAddNewCard();
+    }
   }
 
   return (
@@ -72,10 +87,12 @@ const List: React.FC<ListProps> = ({
                     placeholder="Enter a title for this card..."
                     ref={ref}
                     value={newCardTitle}
-                    onChange={event => setNewCardTitle(event.target.value)}
+                    onChange={handleChange}
+                    onKeyPress={handleKeyPress}
+                    onBlur={handleBlur}
                   />
                   <FormNewCardFooter>
-                    <button type="button" onClick={addNewCard}>Add Card</button>
+                    <button type="button" onClick={handleAddNewCard}>Add Card</button>
                     <CloseIcon onClick={hideNewCardForm} />
                   </FormNewCardFooter>
                 </FormNewCard>

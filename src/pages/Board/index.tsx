@@ -19,7 +19,7 @@ const itemsFromBackend = [
 
 const columnsFromBackend = {
   [uuid()]: {
-    name: 'Requested',
+    name: 'Backlog',
     items: itemsFromBackend,
   },
   [uuid()]: {
@@ -76,7 +76,6 @@ function Board() {
   };
 
   const createNewCard = (listId: string, cardTitle: string) => {
-    console.log(listId, cardTitle);
     const column = columns[listId];
     let { items } = column;
     items = [
