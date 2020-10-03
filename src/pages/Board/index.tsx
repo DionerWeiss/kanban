@@ -7,6 +7,7 @@ import Card from '../../components/Card';
 import List from '../../components/List';
 
 import { Container } from './styles';
+import BoardContext from './context';
 
 const itemsFromBackend = [
   { id: uuid(), content: 'First task' },
@@ -74,26 +75,48 @@ function Board() {
     }
   };
 
+  const createNewCard = (listId: string, cardTitle: string) => {
+    console.log(listId, cardTitle);
+    const column = columns[listId];
+    let { items } = column;
+    items = [
+      ...items, {
+        id: uuid(),
+        content: cardTitle,
+      },
+    ];
+
+    setColumns({
+      ...columns,
+      [listId]: {
+        ...column,
+        items,
+      },
+    });
+  };
+
   return (
-    <Container>
-      <DragDropContext
-        onDragEnd={result => onDragEnd(result)}
-      >
-        {Object.entries(columns).map(([columnId, column], index) => {
-          return (
-            <List key={columnId} name={column.name} columnId={columnId}>
+    <BoardContext.Provider value={{ createNewCard }}>
+      <Container>
+        <DragDropContext
+          onDragEnd={result => onDragEnd(result)}
+        >
+          {Object.entries(columns).map(([columnId, column], index) => {
+            return (
+              <List key={columnId} name={column.name} columnId={columnId}>
 
-              {column.items.map((item, colIndex) => {
-                return (
-                  <Card key={item.id} id={item.id} content={item.content} index={colIndex} />
-                );
-              })}
+                {column.items.map((item, colIndex) => {
+                  return (
+                    <Card key={item.id} id={item.id} content={item.content} index={colIndex} />
+                  );
+                })}
 
-            </List>
-          );
-        })}
-      </DragDropContext>
-    </Container>
+              </List>
+            );
+          })}
+        </DragDropContext>
+      </Container>
+    </BoardContext.Provider>
   );
 }
 

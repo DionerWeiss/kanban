@@ -23,10 +23,11 @@ export default createGlobalStyle`
   }
 
   :root {
-    --color-header: #283e4a;
-    --color-linkedin: #0077b5;
+    --color-header: #FAA613;
+    --color-button: #5aac44;
     --color-input: #e1e9ee;
-    --color-icons: #c7d1d8;
+    --color-icons: #5e6c84;
+    --color-icons-hover: #172b4d;
     --color-hashtag: #7a8b98;
     --color-background: #f5f5f5;
     --color-ad-text: #434649;
@@ -35,6 +36,6 @@ export default createGlobalStyle`
     --color-black: rgba(0,0,0,.9);
     --color-gray: rgba(0,0,0,.6);
     --color-separator: rgba(0,0,0,0.15);
-    --color-white: #fff;
+    --color-white: #FFF;
   }
 `;

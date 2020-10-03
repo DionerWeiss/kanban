@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import {
   Droppable,
 } from 'react-beautiful-dnd';
@@ -6,7 +8,7 @@ import {
   AddNewCardButton, AddNewCardButtonIcon, Container, CloseIcon, FormNewCard, FormNewCardFooter,
 } from './styles';
 
-// import { Container } from './styles';
+import BoardContext from '../../pages/Board/context';
 
 interface ListProps {
   columnId: string,
@@ -16,19 +18,32 @@ interface ListProps {
 const List: React.FC<ListProps> = ({
   children, columnId, name,
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isFormCardVisible, setIsFormCardVisible] = useState(false);
+  const [newCardTitle, setNewCardTitle] = useState('');
+
+  const { createNewCard } = useContext(BoardContext);
 
   const ref = useRef<HTMLTextAreaElement>(null);
 
-  function showNewCardForm() {
-    setIsVisible(true);
+  useEffect(() => {
     if (ref.current) {
       ref.current.focus();
     }
+  }, [isFormCardVisible]);
+
+  function showNewCardForm() {
+    setIsFormCardVisible(true);
   }
 
   function hideNewCardForm() {
-    setIsVisible(false);
+    setNewCardTitle('');
+    setIsFormCardVisible(false);
+  }
+
+  function addNewCard() {
+    createNewCard(columnId, newCardTitle);
+
+    hideNewCardForm();
   }
 
   return (
@@ -51,16 +66,22 @@ const List: React.FC<ListProps> = ({
                 }}
               >
                 {children}
-                <FormNewCard className={isVisible ? 'visible' : ''} onBlur={hideNewCardForm}>
-                  <textarea id="roww" rows={3} placeholder="Enter a title for this card..." ref={ref} />
+                <FormNewCard className={isFormCardVisible ? 'visible' : ''}>
+                  <textarea
+                    rows={3}
+                    placeholder="Enter a title for this card..."
+                    ref={ref}
+                    value={newCardTitle}
+                    onChange={event => setNewCardTitle(event.target.value)}
+                  />
                   <FormNewCardFooter>
-                    <button type="button">Add Card</button>
+                    <button type="button" onClick={addNewCard}>Add Card</button>
                     <CloseIcon onClick={hideNewCardForm} />
                   </FormNewCardFooter>
                 </FormNewCard>
 
                 {provided.placeholder}
-                <AddNewCardButton type="button" onClick={showNewCardForm}>
+                <AddNewCardButton type="button" onClick={showNewCardForm} className={isFormCardVisible ? '' : 'visible'}>
                   <AddNewCardButtonIcon />
                   {' '}
                   Add new card

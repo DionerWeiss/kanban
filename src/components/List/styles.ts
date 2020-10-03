@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FaPlus } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 
@@ -8,13 +8,19 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+const visibleCSS = css`
+  &.visible {
+    display: flex;
+  }
+`;
+
 export const AddNewCardButton = styled.button`
   /* flex: 1 0 auto; */
   /* width: 100%; */
-  display: flex;
+  display: none;
   padding: 3px;
   background: transparent;
-  color: #5e6c84;
+  color: var(--color-icons);
   border-radius: 5px;
   /* text-decoration: none; */
   outline: none;
@@ -25,12 +31,14 @@ export const AddNewCardButton = styled.button`
     cursor: pointer;
   }
 
+  ${visibleCSS}
+
 `;
 
 export const AddNewCardButtonIcon = styled(FaPlus)`
   height: 15px;
   width: 15px;
-  color: #5e6c84;
+  color: var(--color-icons);
   margin-right: 3px;
 `;
 
@@ -42,9 +50,7 @@ export const FormNewCard = styled.div`
     padding: 5px;
   }
 
-  &.visible {
-    display: flex;
-  }
+  ${visibleCSS}
 
 `;
 
@@ -52,15 +58,12 @@ export const FormNewCardFooter = styled.div`
   display: flex;
   margin-top: 5px;
   align-items: center;
-  /* flex-direction: column; */
-
-
 
   button {
-    background: #5aac44;
+    background: var(--color-button);
     padding: 5px;
     margin-right: 5px;
-    color: #FFF;
+    color: var(--color-white);
     border: none;
     border-radius: 2px;
   }
@@ -69,9 +72,9 @@ export const FormNewCardFooter = styled.div`
 export const CloseIcon = styled(MdClose)`
   height: 20px;
   width: 20px;
-  color: #5e6c84;
+  color: var(--color-icons);
 
   &:hover {
-    color: #172b4d;
+    color: var(--color-icons-hover);
   }
 `;
