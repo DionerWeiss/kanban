@@ -8,7 +8,7 @@
 - <a href="https://styled-components.com" target="_blank">styled-components</a>
 
 
-#### Features
+#### Features:
 - [x] Drag & Drop
 - [x] Add new cards to lists
 - [ ] Add new lists to board
