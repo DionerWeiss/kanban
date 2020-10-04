@@ -9,8 +9,9 @@
 
 
 #### Features:
-- [x] Drag & Drop
+- [x] Drag & Drop cards
 - [x] Add new cards to lists
+- [ ] Drag & Drop lists
 - [ ] Add new lists to board
 - [ ] Responsive design
 - [ ] Open modal with card details
