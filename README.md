@@ -11,8 +11,10 @@
 #### Features:
 - [x] Drag & Drop cards
 - [x] Add new cards to lists
+- [ ] Delete cards
 - [ ] Drag & Drop lists
 - [ ] Add new lists to board
+- [ ] Delete lists
 - [ ] Responsive design
 - [ ] Open modal with card details
 - [ ] Dark mode
