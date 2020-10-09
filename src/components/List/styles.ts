@@ -29,9 +29,19 @@ export const AddNewCardButton = styled.button`
   /* text-decoration: none; */
   outline: none;
   border-color: transparent;
+  justify-content: center;
+  border: 1px solid;
+  width: 100%;
 
-  &:hover {
-    opacity: 0.8;
+/* {
+    opacity: 0.7;
+    cursor: pointer;
+  } */
+
+  &:focus,  &:hover  {
+    background: var(--color-button-hover);
+    opacity: 0.4;
+    color: var(--color-white);
     cursor: pointer;
   }
 
@@ -91,5 +101,5 @@ export const Wrapper = styled.div<WrapperProps>`
   padding: 4px;
   width: 250px;
   min-height: 500px;
-  background: ${props => (props.isDraggingOver ? 'lightblue' : 'lightgrey')} ;
+  background: ${props => (props.isDraggingOver ? 'var(--color-list-over)' : 'var(--color-list)')} ;
 `;

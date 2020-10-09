@@ -27,15 +27,20 @@ export default createGlobalStyle`
     --color-button: #5aac44;
     --color-input: #e1e9ee;
     --color-icons: #5e6c84;
+    --color-card: #456C86;
+    --color-card-dragging: #263B4A;
+    --color-list: lightgrey;
+    --color-list-over: lightblue;
     --color-icons-hover: #172b4d;
     --color-hashtag: #7a8b98;
     --color-background: #f5f5f5;
-    --color-ad-text: #434649;
+    --color-button-hover: #434649;
     --color-panel: #fff;
     --color-link: #0073b1;
     --color-black: rgba(0,0,0,.9);
     --color-gray: rgba(0,0,0,.6);
     --color-separator: rgba(0,0,0,0.15);
     --color-white: #FFF;
+
   }
 `;

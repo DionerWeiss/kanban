@@ -1,6 +1,6 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-// import { Container, Header, Title } from './styles';
+import { Wrapper } from './styles';
 
 interface Props {
   id: string,
@@ -18,24 +18,17 @@ const Card: React.FC<Props> = ({
     >
       {(provided, snapshot) => {
         return (
-          <div
+          <Wrapper
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             style={{
-              userSelect: 'none',
-              padding: 16,
-              margin: '0 0 8px 0',
-              minHeight: '50px',
-              backgroundColor: snapshot.isDragging
-                ? '#263B4A'
-                : '#456C86',
-              color: 'white',
               ...provided.draggableProps.style,
             }}
+            isDragging={snapshot.isDragging}
           >
             {content}
-          </div>
+          </Wrapper>
         );
       }}
     </Draggable>
