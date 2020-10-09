@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  /* height: '100%'  */
+
 
 `;
 
-export const BoardContainer = styled.div`
+export const Wrapper = styled.div`
+  margin-top: 80px;
   display: flex;
-  height: calc(100vh - 110px);
+  flex-direction: column;
+  height: calc(100vh - 80px);
 `;

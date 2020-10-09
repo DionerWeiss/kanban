@@ -6,6 +6,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  > div {
+    margin: 8px;
+  }
 `;
 
 const visibleCSS = css`
@@ -77,4 +81,15 @@ export const CloseIcon = styled(MdClose)`
   &:hover {
     color: var(--color-icons-hover);
   }
+`;
+
+interface WrapperProps {
+  isDraggingOver: Boolean
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  padding: 4px;
+  width: 250px;
+  min-height: 500px;
+  background: ${props => (props.isDraggingOver ? 'lightblue' : 'lightgrey')} ;
 `;
