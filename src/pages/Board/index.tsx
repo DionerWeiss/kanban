@@ -98,7 +98,7 @@ function Board() {
   return (
     <BoardContext.Provider value={{ createNewCard }}>
       <Wrapper>
-        <BoardHeader />
+        {/* <BoardHeader /> */}
         <Container>
           <DragDropContext
             onDragEnd={result => onDragEnd(result)}

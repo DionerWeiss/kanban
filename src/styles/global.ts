@@ -27,10 +27,15 @@ export default createGlobalStyle`
     --color-button: #5aac44;
     --color-input: #e1e9ee;
     --color-icons: #5e6c84;
-    --color-card: #456C86;
-    --color-card-dragging: #263B4A;
+    --color-card: #4CB944;
+    --color-card-dragging: #386641;
+    /* --color-card: #456C86; */
+    /* --color-card-dragging: #263B4A; */
     --color-list: lightgrey;
+
     --color-list-over: lightblue;
+    /* --color-list: #246eb9; */
+    /* --color-list-over: #0072BB; */
     --color-icons-hover: #172b4d;
     --color-hashtag: #7a8b98;
     --color-background: #f5f5f5;

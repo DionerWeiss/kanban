@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
 
   > div {
+    max-height: calc(100% - 50px);
     margin: 8px;
   }
 `;
@@ -23,12 +24,12 @@ export const AddNewCardButton = styled.button`
   /* width: 100%; */
   display: none;
   padding: 3px;
-  background: transparent;
+  background: #FFF;
   color: var(--color-icons);
   border-radius: 5px;
   /* text-decoration: none; */
   outline: none;
-  border-color: transparent;
+  border-color: #FFF;
   justify-content: center;
   border: 1px solid;
   width: 100%;
@@ -100,6 +101,23 @@ interface WrapperProps {
 export const Wrapper = styled.div<WrapperProps>`
   padding: 4px;
   width: 250px;
-  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+
   background: ${props => (props.isDraggingOver ? 'var(--color-list-over)' : 'var(--color-list)')} ;
+`;
+
+export const CardsContainer = styled.div`
+  overflow-y: auto;
+  max-height: 100%;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    margin: 0 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 `;
