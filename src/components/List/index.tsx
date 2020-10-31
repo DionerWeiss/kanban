@@ -14,6 +14,7 @@ import {
   FormNewCardFooter,
   Wrapper,
   CardsContainer,
+  Title,
 } from './styles';
 
 import BoardContext from '../../pages/Board/context';
@@ -73,7 +74,7 @@ const List: React.FC<ListProps> = ({
 
   return (
     <Container>
-      <h2>{name}</h2>
+
       <Droppable droppableId={columnId} key={columnId}>
         {(provided, snapshot) => {
           return (
@@ -82,6 +83,7 @@ const List: React.FC<ListProps> = ({
               ref={provided.innerRef}
               isDraggingOver={snapshot.isDraggingOver}
             >
+              <Title>{name}</Title>
               <CardsContainer>
 
                 {children}

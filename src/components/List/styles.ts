@@ -6,11 +6,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  > div {
-    max-height: calc(100% - 50px);
-    margin: 8px;
-  }
 `;
 
 const visibleCSS = css`
@@ -20,24 +15,16 @@ const visibleCSS = css`
 `;
 
 export const AddNewCardButton = styled.button`
-  /* flex: 1 0 auto; */
-  /* width: 100%; */
   display: none;
   padding: 3px;
-  background: #FFF;
+  background: var(--color-white);
   color: var(--color-icons);
   border-radius: 5px;
-  /* text-decoration: none; */
   outline: none;
-  border-color: #FFF;
+  border-color: var(--color-white);
   justify-content: center;
   border: 1px solid;
   width: 100%;
-
-/* {
-    opacity: 0.7;
-    cursor: pointer;
-  } */
 
   &:focus,  &:hover  {
     background: var(--color-button-hover);
@@ -66,7 +53,6 @@ export const FormNewCard = styled.div`
   }
 
   ${visibleCSS}
-
 `;
 
 export const FormNewCardFooter = styled.div`
@@ -103,6 +89,8 @@ export const Wrapper = styled.div<WrapperProps>`
   width: 250px;
   display: flex;
   flex-direction: column;
+  max-height: calc(100% - 50px);
+  margin: 8px;
 
   background: ${props => (props.isDraggingOver ? 'var(--color-list-over)' : 'var(--color-list)')} ;
 `;
@@ -120,4 +108,9 @@ export const CardsContainer = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
   }
+`;
+
+export const Title = styled.h3`
+  margin-left: 5px;
+  margin-bottom: 10px;
 `;

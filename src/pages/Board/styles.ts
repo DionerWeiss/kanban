@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  /* background: #246eb9; */
   height: 100%;
 
 `;
